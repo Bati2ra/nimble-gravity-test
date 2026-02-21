@@ -1,10 +1,6 @@
-import './App.css'
+import { JobBoard } from "./components/JobBoard";
+import "./styles.css";
 
-function App() {
-  return (
-    <>
-    </>
-  )
+export default function App() {
+  return <JobBoard />;
 }
-
-export default App
