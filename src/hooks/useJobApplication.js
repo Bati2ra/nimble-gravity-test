@@ -29,6 +29,7 @@ const submit = async () => {
       await submitApplication({
         uuid: candidate.uuid,
         candidateId: candidate.candidateId,
+        applicationId: candidate.applicationId,
         jobId,
         repoUrl,
       });

@@ -35,6 +35,7 @@ export async function fetchJobs() {
 export async function submitApplication({
     uuid,
     candidateId,
+    applicationId,
     jobId,
     repoUrl,
 }) {
@@ -45,6 +46,7 @@ export async function submitApplication({
             body: JSON.stringify({
                 uuid,
                 candidateId,
+                applicationId,
                 jobId,
                 repoUrl,
             }),
