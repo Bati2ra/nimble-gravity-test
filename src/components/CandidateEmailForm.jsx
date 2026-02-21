@@ -15,9 +15,9 @@ export function CandidateEmailForm({ onSubmit, loading, error }) {
 
   return (
     <div className="email-form">
-      <p >Step 1 of 2</p>
-      <h1 >Who are you?</h1>
-      <p >
+      <p className="job-board__eyebrow">Step 1 of 2</p>
+      <h1 className="job-board__heading">Who are you?</h1>
+      <p className="job-board__subheading">
         Enter your email to load your candidate profile.
       </p>
 
