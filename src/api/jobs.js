@@ -26,12 +26,22 @@ export async function fetchJobs() {
 }
 
 
-export async function submitApplication(jobId, repoUrl) {
+export async function submitApplication({
+        uuid,
+        candidateId,
+        jobId,
+        repoUrl,
+      }) {
     try {
-        const res = await fetch(`${BASE_URL}/api/jobs/apply`, {
+        const res = await fetch(`${BASE_URL}/api/candidate/apply-to-job`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ job_id: jobId, repo_url: repoUrl }),
+            body: JSON.stringify({
+                uuid,
+                candidateId,
+                jobId,
+                repoUrl,
+            }),
         });
 
         if (!res.ok) {

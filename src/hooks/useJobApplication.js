@@ -3,7 +3,7 @@ import { submitApplication } from "../api/jobs";
 
 const GITHUB_URL_REGEX = /^https:\/\/github\.com\/[^/]+\/[^/]+/;
 
-export function useJobApplication(jobId) {
+export function useJobApplication(jobId, candidate) {
   const [repoUrl, setRepoUrl] = useState("");
   const [status, setStatus] = useState("idle");
   const [errorMsg, setErrorMsg] = useState("");
