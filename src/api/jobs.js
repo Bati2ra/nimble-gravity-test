@@ -15,24 +15,32 @@ export async function fetchCandidate(email) {
 }
 
 export async function fetchJobs() {
-    const res = await fetch(`${BASE_URL}/api/jobs/get-list`);
-    if (!res.ok) throw new Error(`Failed to fetch jobs (${res.status})`);
-    return res.json();
+    try {
+        const res = await fetch(`${BASE_URL}/api/jobs/get-list`);
+        if (!res.ok) throw new Error(`Failed to fetch jobs (${res.status})`);
+        return res.json();
+    } catch (e) {
+        // En caso de error de red o url incorrecta se lanza un error genérico.
+        throw new Error("Network error. Please try again later.");
+    }
 }
 
 
 export async function submitApplication(jobId, repoUrl) {
-    const res = await fetch(`${BASE_URL}/api/jobs/apply`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ job_id: jobId, repo_url: repoUrl }),
-    });
+    try {
+        const res = await fetch(`${BASE_URL}/api/jobs/apply`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ job_id: jobId, repo_url: repoUrl }),
+        });
 
-    if (!res.ok) {
-        const err = await res.json().catch(() => ({}));
-        throw new Error(err.message || `Submission failed (${res.status})`);
+        if (!res.ok) {
+            const err = await res.json().catch(() => ({}));
+            throw new Error(err.message || `Submission failed (${res.status})`);
+        }
+        return res.json();
+    } catch (e) {
+        // En caso de error de red o url incorrecta se lanza un error genérico.
+        throw new Error("Network error. Please try again later.");
     }
-
-    return res.json();
-
 }
